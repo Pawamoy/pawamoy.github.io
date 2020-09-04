@@ -11,7 +11,7 @@
         <meta name="description" content="Findings, thoughts, tutorials, work. Pieces of my mind!">
       
       
-        <link rel="canonical" href="https://pawamoy.github.io/drafts/2018-11-27-ssh-keys-and-passwords-management/">
+        <link rel="canonical" href="https://pawamoy.github.io/drafts/building-my-own-everything-part-1/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>Managing SSH keys for remote servers and services: a solution with tomb and pass</title>
+        <title>Building my own Everything, Part 1</title>
       
     
     
@@ -63,12 +63,24 @@
     <div data-md-component="skip">
       
         
-        <a href="#ssh-keys" class="md-skip">
+        <a href="#the-rabbit-hole" class="md-skip">
           Skip to content
         </a>
       
     </div>
     <div data-md-component="announce">
+      
+        <aside class="md-announce">
+          <div class="md-announce__inner md-grid md-typeset">
+            
+  <b>🚧 Comments are temporarily deactivated. 🚧</b><br>
+  The reason is: Disqus fails at migrating them to the new URLs.
+  I will replace Disqus with <a href="https://posativ.org/isso/"><code>Isso</code></a> shortly.
+  The past comments are safe, and I will re-import them in Isso
+  once I have it installed on a personal server.
+ 
+          </div>
+        </aside>
       
     </div>
     
@@ -91,7 +103,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Managing SSH keys for remote servers and services: a solution with tomb and pass
+              Building my own Everything, Part 1
             
           </span>
         </div>
@@ -176,7 +188,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../posts/unify-logging-for-a-gunicorn-uvicorn-app/" class="md-tabs__link">
+        <a href="../../posts/how-to-deal-with-jinja2-spacing/" class="md-tabs__link">
           Posts
         </a>
       
@@ -295,6 +307,18 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../posts/how-to-deal-with-jinja2-spacing/" title="How to deal with spacing in Jinja2 templates" class="md-nav__link">
+      How to deal with spacing in Jinja2 templates
+    </a>
+  </li>
+
         
           
           
@@ -649,8 +673,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ssh-keys" class="md-nav__link">
-    SSH keys
+  <a href="#the-rabbit-hole" class="md-nav__link">
+    The rabbit hole
   </a>
   
 </li>
@@ -666,47 +690,56 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-                
-                  <a href="https://github.com/pawamoy/website/edit/master/docs/drafts/2018-11-27-ssh-keys-and-passwords-management.markdown" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  
-                
-                
-                  <h1>Managing SSH keys for remote servers and services: a solution with tomb and pass</h1>
-                
-                <p>When you are given access to a lot of remote servers,
-it's getting more and more complicated
-to remember the passwords for every SSH key and server account.
-In this post I will show you a method
-to organize your SSH keys and passwords
-in a secure manner.</p>
+  <h1>Building my own Everything, Part 1</h1>
+  <p class="post-meta">
+    Published Jun 30, 2020
+    by Timothée Mazzucotelli
+  </p>
+  <p>Where should I start?
+I want to get some things done?
+I want a personal assistant tailored to my needs and life-style?
+I want to store everything I know and every file I have into a graph database?
+I want a simple, cross-platform, online/offline todo list
+in which I can queue items to review later?
+I want a personal API on a personal server?
+I want to automate a lot of things?
+I want to make my computer do the hard work,
+so I just have to decide when it cannot?</p>
+<p>Yes. All of these. And more.</p>
 <!--more-->
 
-<p>The goal of this method is to deal with:</p>
-<ol>
-<li><a href="#ssh-keys">SSH keys</a></li>
-<li><a href="#ssh-keys-passwords">their associated passwords</a></li>
-<li><a href="#remote-server-accounts">remote server accounts login and passwords</a></li>
-</ol>
-<h2 id="ssh-keys">SSH keys<a class="headerlink" href="#ssh-keys" title="Permanent link">¤</a></h2>
-<p>I will distinguish the different usages we make of SSH keys.</p>
-<ol>
-<li><em>Personal machine to remote server SSH key:</em>
-  let's call it a <strong>P-R key</strong>, like <code>Personal-to-Remote</code>.
-  It's a key you use to connect to a server from your laptop
-  or from your work machine.</li>
-<li><em>Remote server to remote server SSH key:</em> a <strong>R-R key</strong>, like <code>Remote-to-Remote</code>. It's a key present on a remote server,
-  used to connect to another remote server.</li>
-<li><em>Remote server to remote server SSH key:</em> a <strong>R-R key</strong>, like <code>Remote-to-Remote</code>. It's a key present on a remote server,
-  used to connect to another remote server.</li>
-</ol>
-                
-                  
-                
-              
+<p>I have put back this project long enough.
+I think I am finally ready to start tackling it.</p>
+<h2 id="the-rabbit-hole">The rabbit hole<a class="headerlink" href="#the-rabbit-hole" title="Permanent link">¤</a></h2>
+<p>omnidia
+  python
+  neo4j
+    python ogm for neo4j
+      cypher query builder: neopy</p>
+<p>at the same time
+  multimedia library
+    searching
+      crawling torrents sites in python
+        fork of thepiratebay
+    downloading
+      aria2: aria2p
+    organizing
+      filebot in python: mvodb</p>
+<p>at the same time
+  many python projects
+    project management, templating and automation tools
+      bye cookiecutter and cookie-poetry, hello copier and copier-poetry
+      more python projects
+        git-changelog
+        jinja templates and scripts
+        failprint
+        open source, visibility, contributions
+          documentation
+            bye sphinx, hello mkdocs and mkdocs-material
+              mkdocstrings and pytkdocs</p>
+<p>at the same time
+  maintaining projects, sending pull requests</p>
+
               
                 
 
