@@ -15,7 +15,7 @@
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.12">
     
     
       
@@ -23,14 +23,14 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.a2408e81.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.4dd2dd8d.min.css">
       
-        <link rel="stylesheet" href="assets/stylesheets/palette.a46bcfb3.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.6a5ad368.min.css">
       
       
         
         
-        <meta name="theme-color" content="#ffc107">
+        <meta name="theme-color" content="#ffc105">
       
     
     
@@ -57,6 +57,7 @@
     
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="indigo">
   
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -188,7 +189,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="posts/how-to-deal-with-jinja2-spacing/" class="md-tabs__link">
+        <a href="posts/migrate-disqus-comments-to-utterances-github/" class="md-tabs__link">
           Posts
         </a>
       
@@ -303,19 +304,27 @@
     
     <label class="md-nav__link" for="nav-4">
       Posts
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Posts" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Posts
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="posts/migrate-disqus-comments-to-utterances-github/" title="Migrate Disqus comments to Utterances (in GitHub issues) with Python" class="md-nav__link">
+      Migrate Disqus comments to Utterances (in GitHub issues) with Python
+    </a>
+  </li>
+
         
           
           
@@ -465,15 +474,11 @@
     
     <label class="md-nav__link" for="nav-5">
       Showcase
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Showcase" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Showcase
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -502,15 +507,11 @@
     
     <label class="md-nav__link" for="nav-5-2">
       Projects
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Projects" data-md-level="2">
       <label class="md-nav__title" for="nav-5-2">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
         Projects
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -693,6 +694,36 @@ or some projects I worked on in the <a href="showcase/">Showcase</a>.</p>
   
     
   
+    
+  
+    
+      <hr>
+      <span class="post-date">Sep 13, 2020</span>
+      <h2 class="post-title"><a href="posts/migrate-disqus-comments-to-utterances-github/" >Migrate Disqus comments to Utterances (in GitHub issues) with Python</a></h1>
+      <p>When I replaced <a href="https://jekyllrb.com/">Jekyll</a>
+and my <a href="https://github.com/pawamoy/jekyll-readthedocs/">Jekyll-ReadTheDocs theme</a>
+with <a href="https://www.mkdocs.org/">MkDocs</a>
+and a <a href="https://github.com/pawamoy/website">blog-customised version</a> of
+the <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs theme</a>,
+the URLs of my posts changed.</p>
+<p>I was using <a href="https://disqus.com">Disqus</a> for comments,
+and they provide a way to migrate threads from old URLs to new URLs.
+Unfortunately, this time it didn't work for some reason
+(I had already done it once in the past and it worked fine).</p>
+<p>I've read more and more criticism about Disqus related to privacy,
+so I looked at a replacement.
+The Disqus thread migration was not working so it was the perfect occasion!</p>
+<p>I've read a few webpages and got interested in <a href="https://posativ.org/isso/">Isso</a>.
+Unfortunately again, I <a href="https://github.com/posativ/isso/issues/671">did not manage</a>
+to install it on my Raspberry Pi.</p>
+<p>So I went with a much simpler solution: <a href="https://utteranc.es/">Utterances</a>.
+You basically enable a GitHub app on your repository,
+add a script in your posts pages, and voilà: your new comment section
+powered by GitHub issues.</p>
+
+      
+        <div class="post-excerpt-image"><img src="/assets/comments.png"/></div>
+      
     
   
     
@@ -986,15 +1017,15 @@ I had then all I needed to start a proof of concept.</p>
       
     </div>
     
-      <script src="assets/javascripts/vendor.d710d30a.min.js"></script>
-      <script src="assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="assets/javascripts/vendor.3636a4ec.min.js"></script>
+      <script src="assets/javascripts/bundle.e9fe3281.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
       <script>
         app = initialize({
           base: ".",
           features: ["tabs"],
           search: Object.assign({
-            worker: "assets/javascripts/worker/search.27c6a5e6.min.js"
+            worker: "assets/javascripts/worker/search.5eca75d3.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>

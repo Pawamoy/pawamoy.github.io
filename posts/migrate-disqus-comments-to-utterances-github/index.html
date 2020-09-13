@@ -11,7 +11,7 @@
         <meta name="description" content="Findings, thoughts, tutorials, work. Pieces of my mind!">
       
       
-        <link rel="canonical" href="https://pawamoy.github.io/notes/install_printer_on_linux/">
+        <link rel="canonical" href="https://pawamoy.github.io/posts/migrate-disqus-comments-to-utterances-github/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>Install a printer on Linux - pawamoy's website</title>
+        <title>Migrate Disqus comments to Utterances (in GitHub issues) with Python - pawamoy's website</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-a-printer-on-linux" class="md-skip">
+        <a href="#the-script" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Install a printer on Linux
+              Migrate Disqus comments to Utterances (in GitHub issues) with Python
             
           </span>
         </div>
@@ -154,14 +154,16 @@
         
           
 
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../.." class="md-tabs__link md-tabs__link--active">
+      <a href="../.." class="md-tabs__link">
         Home
       </a>
     
@@ -177,7 +179,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../posts/migrate-disqus-comments-to-utterances-github/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link md-tabs__link--active">
           Posts
         </a>
       
@@ -276,10 +278,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Posts
@@ -297,11 +301,45 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../posts/migrate-disqus-comments-to-utterances-github/" title="Migrate Disqus comments to Utterances (in GitHub issues) with Python" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Migrate Disqus comments to Utterances (in GitHub issues) with Python
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Migrate Disqus comments to Utterances (in GitHub issues) with Python" class="md-nav__link md-nav__link--active">
       Migrate Disqus comments to Utterances (in GitHub issues) with Python
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-script" class="md-nav__link">
+    The script
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -311,7 +349,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/how-to-deal-with-jinja2-spacing/" title="How to deal with spacing in Jinja2 templates" class="md-nav__link">
+    <a href="../how-to-deal-with-jinja2-spacing/" title="How to deal with spacing in Jinja2 templates" class="md-nav__link">
       How to deal with spacing in Jinja2 templates
     </a>
   </li>
@@ -323,7 +361,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/unify-logging-for-a-gunicorn-uvicorn-app/" title="Unify Python logging for a Gunicorn/Uvicorn/FastAPI application" class="md-nav__link">
+    <a href="../unify-logging-for-a-gunicorn-uvicorn-app/" title="Unify Python logging for a Gunicorn/Uvicorn/FastAPI application" class="md-nav__link">
       Unify Python logging for a Gunicorn/Uvicorn/FastAPI application
     </a>
   </li>
@@ -335,7 +373,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/save-pytest-logs-as-artifact-gitlab-ci/" title="Save the logs generated during a pytest run as a job artifact on GitLab CI" class="md-nav__link">
+    <a href="../save-pytest-logs-as-artifact-gitlab-ci/" title="Save the logs generated during a pytest run as a job artifact on GitLab CI" class="md-nav__link">
       Save the logs generated during a pytest run as a job artifact on GitLab CI
     </a>
   </li>
@@ -347,7 +385,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/challenge-fill-space-one-line-90-degree-same-direction/" title="Challenge: fill a 2D space with one continuous line doing 90° angle turns in the same direction (left/right)" class="md-nav__link">
+    <a href="../challenge-fill-space-one-line-90-degree-same-direction/" title="Challenge: fill a 2D space with one continuous line doing 90° angle turns in the same direction (left/right)" class="md-nav__link">
       Challenge: fill a 2D space with one continuous line doing 90° angle turns in the same direction (left/right)
     </a>
   </li>
@@ -359,7 +397,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/django-auth-server-for-shiny/" title="Django application as an authentication / authorization server for Shiny" class="md-nav__link">
+    <a href="../django-auth-server-for-shiny/" title="Django application as an authentication / authorization server for Shiny" class="md-nav__link">
       Django application as an authentication / authorization server for Shiny
     </a>
   </li>
@@ -371,7 +409,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/dual-screens-setup-nvidia-bunsenlabs-debian-jessie/" title="How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens" class="md-nav__link">
+    <a href="../dual-screens-setup-nvidia-bunsenlabs-debian-jessie/" title="How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens" class="md-nav__link">
       How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens
     </a>
   </li>
@@ -383,7 +421,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/docker-compose-django-postgres-nginx/" title="Docker Compose with NginX, Django, Gunicorn and multiple Postgres databases" class="md-nav__link">
+    <a href="../docker-compose-django-postgres-nginx/" title="Docker Compose with NginX, Django, Gunicorn and multiple Postgres databases" class="md-nav__link">
       Docker Compose with NginX, Django, Gunicorn and multiple Postgres databases
     </a>
   </li>
@@ -395,7 +433,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/python-static-code-analysis-tools/" title="Python static code analysis tools" class="md-nav__link">
+    <a href="../python-static-code-analysis-tools/" title="Python static code analysis tools" class="md-nav__link">
       Python static code analysis tools
     </a>
   </li>
@@ -407,7 +445,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/write-and-use-a-tox-plugin-from-inside-your-package/" title="Write and use a tox plugin from inside your package" class="md-nav__link">
+    <a href="../write-and-use-a-tox-plugin-from-inside-your-package/" title="Write and use a tox plugin from inside your package" class="md-nav__link">
       Write and use a tox plugin from inside your package
     </a>
   </li>
@@ -419,7 +457,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/documentation-in-your-shell-scripts-using-shellman/" title="Documentation in your shell scripts using shellman" class="md-nav__link">
+    <a href="../documentation-in-your-shell-scripts-using-shellman/" title="Documentation in your shell scripts using shellman" class="md-nav__link">
       Documentation in your shell scripts using shellman
     </a>
   </li>
@@ -431,7 +469,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../posts/django-dashboard-with-suit-and-highcharts/" title="Django admin dashboard with Suit and Highcharts" class="md-nav__link">
+    <a href="../django-dashboard-with-suit-and-highcharts/" title="Django admin dashboard with Suit and Highcharts" class="md-nav__link">
       Django admin dashboard with Suit and Highcharts
     </a>
   </li>
@@ -652,8 +690,21 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-script" class="md-nav__link">
+    The script
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -664,36 +715,143 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-                
-                  <a href="https://github.com/pawamoy/website/edit/master/docs/notes/install_printer_on_linux.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  
-                
-                
-                <h1 id="install-a-printer-on-linux">Install a printer on Linux<a class="headerlink" href="#install-a-printer-on-linux" title="Permanent link">¤</a></h1>
-<p>If <code>system-config-printer</code> does not work, you will need to do it via CUPS
-web interface. Go to <a href="http://localhost:631/admin">http://localhost:631/admin</a>, click on "Add printer". It
-will ask for a username and password. Try "root" and your "root" password.
-If is does not work, then edit the file "/etc/cups/cupsd.conf".
-Instead of "Basic", put "None" at "DefaultAuthType". Also remove every
-line containing "@SYSTEM". Restart CUPS with <code>sudo service cups restart</code>.
-Go again on the web interface, click on "Add printer".</p>
-<p>Download your printer's driver at <a href="http://www.support.xerox.com">www.support.xerox.com</a> by choosing the
-Generic PPD. It's an executable file (.exe) that you can open with
-your archive manager on Linux. Extract the PPD file and use it in CUPS.</p>
-<p>Should be good now, except it's considered a generic printer and will
-mess up your with your fonts. Great.</p>
-<hr />
+  <h1>Migrate Disqus comments to Utterances (in GitHub issues) with Python</h1>
+  <p class="post-meta">
+    Published Sep 13, 2020
+    by Timothée Mazzucotelli
+  </p>
+  <p>When I replaced <a href="https://jekyllrb.com/">Jekyll</a>
+and my <a href="https://github.com/pawamoy/jekyll-readthedocs/">Jekyll-ReadTheDocs theme</a>
+with <a href="https://www.mkdocs.org/">MkDocs</a>
+and a <a href="https://github.com/pawamoy/website">blog-customised version</a> of
+the <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs theme</a>,
+the URLs of my posts changed.</p>
+<p>I was using <a href="https://disqus.com">Disqus</a> for comments,
+and they provide a way to migrate threads from old URLs to new URLs.
+Unfortunately, this time it didn't work for some reason
+(I had already done it once in the past and it worked fine).</p>
+<p>I've read more and more criticism about Disqus related to privacy,
+so I looked at a replacement.
+The Disqus thread migration was not working so it was the perfect occasion!</p>
+<p>I've read a few webpages and got interested in <a href="https://posativ.org/isso/">Isso</a>.
+Unfortunately again, I <a href="https://github.com/posativ/isso/issues/671">did not manage</a>
+to install it on my Raspberry Pi.</p>
+<p>So I went with a much simpler solution: <a href="https://utteranc.es/">Utterances</a>.
+You basically enable a GitHub app on your repository,
+add a script in your posts pages, and voilà: your new comment section
+powered by GitHub issues.</p>
+<!--more-->
+
+<p>I'm not completely satisfied because readers will need to log in
+with their GitHub account to comment (no anonymous comments),
+and you can't have nested discussions (well, just like in GitHub issues).</p>
+<p>But this was really easy to setup <img alt="😄" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f604.png" title=":smile:" />!</p>
+<p>Now I just needed to migrate the Disqus comments into GitHub issues.
+To do this semi-automatically, I wrote the following script.
+"Semi-automatically" because I still had to write a "test" comment
+in each one of my posts so Utterances would initiate/create the issues.
+I guess it could be implemented in the script directly,
+but since I just had a dozen of posts, I took the easy/repetitive way.</p>
+<h2 id="the-script">The script<a class="headerlink" href="#the-script" title="Permanent link">¤</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You'll have to create the initial issues before running the script!
+Serve your blog locally, and write a "test" comment in every post that has comments.</p>
+</div>
+<p>First, <a href="https://help.disqus.com/en/articles/1717164-comments-export">export your Disqus comments</a>.</p>
+<p>Then you'll need two Python libraries:</p>
 <ul>
-<li><a href="https://www.linuxquestions.org/questions/linux-software-2/cups-username-and-password-156986/">https://www.linuxquestions.org/questions/linux-software-2/cups-username-and-password-156986/</a></li>
-<li><a href="http://forum.support.xerox.com/t5/Printing/CUPS-Driver-PPD-file-for-Xerox-3345-WorkCentre-printer-for-Linux/td-p/203672">http://forum.support.xerox.com/t5/Printing/CUPS-Driver-PPD-file-for-Xerox-3345-WorkCentre-printer-for-Linux/td-p/203672</a></li>
-<li><a href="https://github.com/zdohnal/system-config-printer/issues/36">https://github.com/zdohnal/system-config-printer/issues/36</a></li>
+<li><a href="https://pypi.org/project/pygithub33/"><code>pygithub</code></a></li>
+<li><a href="https://pypi.org/project/xmltodict/"><code>xmltodict</code></a></li>
 </ul>
-                
-              
+<p>You'll also need to create a token on GitHub,
+with just the <code>public repos</code> access.</p>
+<p>Write the following environment variables in a file,
+and source it.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">FILEPATH</span><span class="o">=</span><span class="s2">&quot;comments.xml&quot;</span>
+<span class="nb">export</span> <span class="nv">USERNAME</span><span class="o">=</span><span class="s2">&quot;yourUsername&quot;</span>
+<span class="nb">export</span> <span class="nv">TOKEN</span><span class="o">=</span><span class="s2">&quot;yourToken&quot;</span>
+<span class="nb">export</span> <span class="nv">REPOSITORY</span><span class="o">=</span><span class="s2">&quot;yourUsername/yourUsername.github.io&quot;</span>
+<span class="nb">export</span> <span class="nv">BASE_URL</span><span class="o">=</span><span class="s2">&quot;https://yourUsername.github.io/&quot;</span>
+</code></pre></div>
+
+<p>Now you can copy/paste and run this script:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">xmltodict</span>
+<span class="kn">from</span> <span class="nn">github</span> <span class="kn">import</span> <span class="n">Github</span>
+
+<span class="n">FILEPATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;FILEPATH&quot;</span><span class="p">]</span>
+<span class="n">USERNAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;USERNAME&quot;</span><span class="p">]</span>
+<span class="n">TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span>
+<span class="n">REPOSITORY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;REPOSITORY&quot;</span><span class="p">]</span>
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;BASE_URL&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">disqus_to_github</span><span class="p">():</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">Github</span><span class="p">(</span><span class="n">TOKEN</span><span class="p">)</span>
+    <span class="n">repo</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">get_repo</span><span class="p">(</span><span class="n">REPOSITORY</span><span class="p">)</span>
+    <span class="n">issues</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">get_issues</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">FILEPATH</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">xmltodict</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;disqus&quot;</span><span class="p">]</span>
+
+    <span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;thread&quot;</span><span class="p">]]</span>
+    <span class="n">posts</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">((</span><span class="nb">dict</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;post&quot;</span><span class="p">]),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;createdAt&quot;</span><span class="p">])</span>
+
+    <span class="c1"># only keep threads with comments</span>
+    <span class="n">twc_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;thread&quot;</span><span class="p">][</span><span class="s2">&quot;@dsq:id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">)</span>
+    <span class="n">threads</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;@dsq:id&quot;</span><span class="p">]:</span> <span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span> <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;@dsq:id&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">twc_ids</span><span class="p">}</span>
+
+    <span class="c1"># associate the thread to each post</span>
+    <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">posts</span><span class="p">:</span>
+        <span class="n">post</span><span class="p">[</span><span class="s2">&quot;thread&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">threads</span><span class="p">[</span><span class="n">post</span><span class="p">[</span><span class="s2">&quot;thread&quot;</span><span class="p">][</span><span class="s2">&quot;@dsq:id&quot;</span><span class="p">]]</span>
+
+    <span class="c1"># associate the related GitHub issue to each thread</span>
+    <span class="c1"># warning: the issues need to exist before you run this script!</span>
+    <span class="c1"># write a &quot;test&quot; comment in each one of your post with comments</span>
+    <span class="c1"># to make Utterances create the initial issues</span>
+    <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">issue</span> <span class="ow">in</span> <span class="n">issues</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">issue</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="n">thread</span><span class="p">[</span><span class="s2">&quot;link&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">BASE_URL</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+                <span class="n">thread</span><span class="p">[</span><span class="s2">&quot;issue&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">issue</span>
+                <span class="k">break</span>
+
+    <span class="c1"># iterate on posts and create issues comments accordingly</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">post</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">posts</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">post</span><span class="p">[</span><span class="s2">&quot;author&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">post</span><span class="p">[</span><span class="s2">&quot;author&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">)</span>
+        <span class="n">mention</span> <span class="o">=</span> <span class="s2">&quot; @&quot;</span> <span class="o">+</span> <span class="n">user</span> <span class="k">if</span> <span class="n">user</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;disqus_&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">post</span><span class="p">[</span><span class="s2">&quot;createdAt&quot;</span><span class="p">]</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">post</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
+        <span class="n">issue</span> <span class="o">=</span> <span class="n">post</span><span class="p">[</span><span class="s2">&quot;thread&quot;</span><span class="p">][</span><span class="s2">&quot;issue&quot;</span><span class="p">]</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;*Original date: </span><span class="si">{</span><span class="n">date</span><span class="si">}</span><span class="s2">*</span><span class="se">\n\n</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="c1"># don&#39;t add original author when it&#39;s you</span>
+        <span class="k">if</span> <span class="n">user</span> <span class="o">!=</span> <span class="n">USERNAME</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;*Original author:* **</span><span class="si">{</span><span class="n">name</span><span class="si">}{</span><span class="n">mention</span><span class="si">}</span><span class="s2">**  </span><span class="se">\n</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">&quot;</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Posting </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">posts</span><span class="p">)</span><span class="si">}</span><span class="s2"> to issue </span><span class="si">{</span><span class="n">issue</span><span class="o">.</span><span class="n">number</span><span class="si">}</span><span class="s2">    </span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">issue</span><span class="o">.</span><span class="n">create_comment</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">disqus_to_github</span><span class="p">()</span>
+</code></pre></div>
+
+<p>I wrote this for a one-time, personal use only,
+so it could easily crash when you try it!
+Just use your Python skills and adapt it <img alt="😉" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f609.png" title=":wink:" /></p>
+
+  <hr>
+  <script src="https://utteranc.es/client.js"
+        repo="pawamoy/pawamoy.github.io"
+        issue-term="pathname"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+  </script>
+
               
                 
 
@@ -706,6 +864,41 @@ mess up your with your fonts. Great.</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../credits/" title="Credits" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Credits
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../how-to-deal-with-jinja2-spacing/" title="How to deal with spacing in Jinja2 templates" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                How to deal with spacing in Jinja2 templates
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
