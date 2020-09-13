@@ -1098,7 +1098,7 @@ view, and then we add a script to retrieve the Shiny app contents:</p>
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
   <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 
-    <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s1">&#39;{% raw %}{% url &quot;shiny_contents&quot; %}{% endraw %}&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="s1">&#39;{% url &quot;shiny_contents&quot; %}&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
 
       <span class="kd">var</span> <span class="nx">iframe</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;iframe&quot;</span><span class="p">);</span>
       <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#contents&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">iframe</span><span class="p">);</span>
@@ -1117,13 +1117,15 @@ view, and then we add a script to retrieve the Shiny app contents:</p>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 
-<p>Several things happen here:
-- we declare a <code>div</code> of ID <code>contents</code> in which we will add an <code>iframe</code>,
-- we make use of JQuery's <code>$(document).ready</code> and <code>$.getJSON</code> methods to
-  load HTML contents from an URL returning JSON,
-- we create the <code>iframe</code>, add it in the document, then write the HTML contents
+<p>Several things happen here:</p>
+<ul>
+<li>we declare a <code>div</code> of ID <code>contents</code> in which we will add an <code>iframe</code>,</li>
+<li>we make use of JQuery's <code>$(document).ready</code> and <code>$.getJSON</code> methods to
+  load HTML contents from an URL returning JSON,</li>
+<li>we create the <code>iframe</code>, add it in the document, then write the HTML contents
   inside of it. We also reassign the <code>WebSocket</code> variable to the value of the
-  <code>iframe</code> one.</p>
+  <code>iframe</code> one.</li>
+</ul>
 <hr />
 <h4 id="create-the-json-view">Create the JSON view<a class="headerlink" href="#create-the-json-view" title="Permanent link">¤</a></h4>
 <p>As you maybe guessed, work is not finished. We need to add the <code>shiny_contents</code>
