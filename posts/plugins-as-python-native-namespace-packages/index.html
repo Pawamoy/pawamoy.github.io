@@ -11,7 +11,7 @@
         <meta name="description" content="Findings, thoughts, tutorials, work. Pieces of my mind!">
       
       
-        <link rel="canonical" href="https://pawamoy.github.io/posts/write-and-use-a-tox-plugin-from-inside-your-package/">
+        <link rel="canonical" href="https://pawamoy.github.io/posts/plugins-as-python-native-namespace-packages/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>Write and use a tox plugin from inside your package - pawamoy's website</title>
+        <title>Python packages and plugins as namespace packages - pawamoy's website</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#add-a-tox_module-in-your-package" class="md-skip">
+        <a href="#native-namespace-packages" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Write and use a tox plugin from inside your package
+              Python packages and plugins as namespace packages
             
           </span>
         </div>
@@ -183,7 +183,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../plugins-as-python-native-namespace-packages/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link md-tabs__link--active">
           Posts
         </a>
       
@@ -307,10 +307,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" checked>
     
     <label class="md-nav__link" for="nav-4-1">
       2020
@@ -328,11 +330,59 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../plugins-as-python-native-namespace-packages/" title="Python packages and plugins as namespace packages" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Python packages and plugins as namespace packages
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Python packages and plugins as namespace packages" class="md-nav__link md-nav__link--active">
       Python packages and plugins as namespace packages
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#native-namespace-packages" class="md-nav__link">
+    Native namespace packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pkgutil-style-namespace-packages" class="md-nav__link">
+    pkgutil-style namespace packages
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-i-would-have-liked" class="md-nav__link">
+    What I would have liked
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -543,12 +593,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
     
     <label class="md-nav__link" for="nav-4-5">
       2016
@@ -566,59 +614,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Write and use a tox plugin from inside your package
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" title="Write and use a tox plugin from inside your package" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../write-and-use-a-tox-plugin-from-inside-your-package/" title="Write and use a tox plugin from inside your package" class="md-nav__link">
       Write and use a tox plugin from inside your package
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#add-a-tox_module-in-your-package" class="md-nav__link">
-    Add a tox_module in your package
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-the-entry-points" class="md-nav__link">
-    Setup the entry points
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-your-code" class="md-nav__link">
-    Update your code
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -874,22 +874,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#add-a-tox_module-in-your-package" class="md-nav__link">
-    Add a tox_module in your package
+  <a href="#native-namespace-packages" class="md-nav__link">
+    Native namespace packages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup-the-entry-points" class="md-nav__link">
-    Setup the entry points
+  <a href="#pkgutil-style-namespace-packages" class="md-nav__link">
+    pkgutil-style namespace packages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#update-your-code" class="md-nav__link">
-    Update your code
+  <a href="#what-i-would-have-liked" class="md-nav__link">
+    What I would have liked
   </a>
   
 </li>
@@ -905,62 +905,153 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>Write and use a tox plugin from inside your package</h1>
+  <h1>Python packages and plugins as namespace packages</h1>
   <p class="post-meta">
-    Published Dec 07, 2016
+    Published Oct 11, 2020
     by Timothée Mazzucotelli
   </p>
-  <p>So let's say you wrote a program that is using tox and you want to add
-some options to tox's command-line. Reading at <a href="http://tox.readthedocs.io/en/latest/plugins.html">tox's documentation</a>
-about plugins, you see that you have to make a pip installable plugin
-and setup some entry point. In fact, you can skip the pip installable
-side and integrate the plugin directly within your code.</p>
+  <p>A user of <a href="https://github.com/pawamoy/mkdocstrings"><code>mkdocstrings</code></a>
+wrote a Crystal handler for their own use-case.
+They asked on <a href="https://gitter.im/mkdocstrings/community">the Gitter channel</a>
+if we could allow to load external handlers, so they don't have to fork
+the project and install the fork, but rather just install their
+lightweight package containing just the handler.</p>
+<p>We both saw Python namespace packages as good candidates,
+so I experimented a bit, and here are my conclusions.</p>
 <!--more-->
 
-<p>It can be done in three very simple steps.</p>
+<p>Based on the documentation, there are
+<a href="https://packaging.python.org/guides/packaging-namespace-packages/#creating-a-namespace-package">3 ways of creating a Python namespace package</a>:</p>
 <ul>
-<li><a href="#add-a-tox-module-in-your-package">Add a tox_module in your package</a></li>
-<li><a href="#setup-the-entry-points">Setup the entry points</a></li>
-<li><a href="#update-your-code">Update your code</a></li>
+<li>native namespace packages</li>
+<li>pkgutil-style namespace packages</li>
+<li>pkg-resources-style namespace packages</li>
 </ul>
-<h2 id="add-a-tox_module-in-your-package">Add a tox_module in your package<a class="headerlink" href="#add-a-tox_module-in-your-package" title="Permanent link">¤</a></h2>
-<p>Create a new module somewhere. Its name should begin with <code>tox_</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># tox_your_module.py</span>
-<span class="kn">from</span> <span class="nn">tox</span> <span class="kn">import</span> <span class="n">hookimpl</span>
+<p>I only considered the first two options (I'll let you read the docs to see why).</p>
+<h2 id="native-namespace-packages">Native namespace packages<a class="headerlink" href="#native-namespace-packages" title="Permanent link">¤</a></h2>
+<p>Native namespace packages are Python 3 compatible only.
+Good, I don't support Python 2 in my projects.</p>
+<p>To write a native namespace package, you just have to do one thing:
+drop the <code>__init__.py</code>!</p>
+<div class="highlight"><pre><span></span><code>my_namespace_package/
+    my_module_a.py
 
-
-<span class="nd">@hookimpl</span>
-<span class="k">def</span> <span class="nf">tox_addoption</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;my_new_option&#39;</span><span class="p">)</span>
-    <span class="c1"># read argparse&#39;s doc online to see more complex examples</span>
+my_namespace_package/
+    my_module_b.py
 </code></pre></div>
 
-<h2 id="setup-the-entry-points">Setup the entry points<a class="headerlink" href="#setup-the-entry-points" title="Permanent link">¤</a></h2>
-<p>Tox has an automagic system that will see installed plugins and load them when you call it.
-Just set the new <code>tox</code> entry point:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># setup.py</span>
-<span class="n">setup</span><span class="p">(</span>
-    <span class="o">...</span>
-    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="s1">&#39;your_program = your_program.main:main&#39;</span><span class="p">,</span>  <span class="c1"># to be adapted</span>
-        <span class="s1">&#39;tox&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;your_module = your_program.tox_your_module&#39;</span><span class="p">]</span>
-    <span class="p">},</span>
-    <span class="o">...</span>
-<span class="p">)</span>
+<p>Install both packages and you will be able to import
+both <code>my_module_a</code> and <code>my_module_b</code> from <code>my_namespace_package</code>.</p>
+<p>If you want to provide deeper modules, you will have to drop
+all <code>__init__.py</code> files along the way:</p>
+<div class="highlight"><pre><span></span><code># main package
+package/
+    level1/
+        level2/
+            builtin_module.py
+    subpackage/
+        __init__.py
+        sub.py
+    a.py
+
+# plugin
+package/
+    level1/
+        level2/
+            plugin_module.py
 </code></pre></div>
 
-<p>Installing your package will make it visible to tox.</p>
-<h2 id="update-your-code">Update your code<a class="headerlink" href="#update-your-code" title="Permanent link">¤</a></h2>
-<p>In your code you will now be able to use the <code>my_new_option</code> option in tox's config object, and do whatever you want with it!</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tox.session</span> <span class="kn">import</span> <span class="n">prepare</span>
+<p>Notice how we don't have any <code>__init__.py</code> in <code>package</code>, <code>level1</code> and <code>level2</code>.
+This is required for the plugin package to add modules there.</p>
+<p>In this example, <code>subpackage</code> has an <code>__init__.py</code> file,
+it means that our plugin package could not add a module into it.</p>
+<h2 id="pkgutil-style-namespace-packages"><code>pkgutil</code>-style namespace packages<a class="headerlink" href="#pkgutil-style-namespace-packages" title="Permanent link">¤</a></h2>
+<p>The <code>pkgutil</code> way is compatible with Python 2 and Python 3.
+It allows to keep <code>__init__.py</code> modules.</p>
+<div class="highlight"><pre><span></span><code># main package
+package/
+    __init__.py
+    level1/
+        __init__.py
+        level2/
+            __init__.py
+            builtin_module.py
 
-<span class="n">config</span> <span class="o">=</span> <span class="n">prepare</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">option</span><span class="o">.</span><span class="n">my_new_option</span><span class="p">)</span>
+# plugin
+package/
+    __init__.py
+    level1/
+        __init__.py
+        level2/
+            __init__.py
+            plugin_module.py
 </code></pre></div>
 
-<p>Voilà.</p>
-<p>Of course your plugin could be much more complex, but this is another story.</p>
+<p>Each <code>__init__.py</code> must contain this code:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pkgutil</span> <span class="kn">import</span> <span class="n">extend_path</span>
+<span class="n">__path__</span> <span class="o">=</span> <span class="n">extend_path</span><span class="p">(</span><span class="n">__path__</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Basically, it's a bit like the native way,
+except that you keep your <code>__init__.py</code> modules,
+<strong>but they must be identical across all packages!</strong></p>
+<p>The <code>__init__.py</code> modules of the plugin will overwrite the
+<code>__init__.py</code> modules of the main package. If they are not
+identical, things will break (mostly imports).</p>
+<p>So, with the native way, you cannot write code in <code>__init__.py</code>
+because those modules must not exist,
+and with the <code>pkgutil</code> way you must not write code in <code>__init__.py</code>
+because you don't want to have users duplicate it in their own.</p>
+<p>At this state, I prefer the native way, as it's less files to write.</p>
+<h2 id="what-i-would-have-liked">What I would have liked<a class="headerlink" href="#what-i-would-have-liked" title="Permanent link">¤</a></h2>
+<p>Maybe namespace packages are not the best option for plugins.</p>
+<p>But I would have loved being able to write my main package normally,
+with <code>__init__.py</code>, and as much code in those as I want,
+and write the plugin package <em>without any</em> <code>__init__.py</code>, so as to
+"plug" (i.e. merge) additional modules into the main package:</p>
+<div class="highlight"><pre><span></span><code># main package
+package/
+    __init__.py
+    level1/
+        __init__.py
+        level2/
+            __init__.py
+            builtin_module.py
+
+# plugin
+package/
+    level1/
+        level2/
+            plugin_module.py
+</code></pre></div>
+
+<p>The order of installation would not matter of course,
+as merging the main package into the plugin one, or the opposite,
+would result in the same final package on the disk:</p>
+<div class="highlight"><pre><span></span><code># main package
+package/
+    __init__.py
+    level1/
+        __init__.py
+        level2/
+            __init__.py
+            builtin_module.py
+            plugin_module.py
+</code></pre></div>
+
+<p>The main package author doesn't even have to think about plugins
+and prepare the field by removing <code>__init__.py</code> where it is needed.
+Instead, they just write their package normally.</p>
+<p>Then users can write a namespace package, mimicking the main package
+structure, but without <code>__init__.py</code> files, and BOOM, they
+successfully wrote a plugin!</p>
+<p>Native namespace packages look like they are trying to be implicit,
+but in my taste they are still not implicit enough.</p>
+<p>Also, merging namespace packages into packages of the same name
+would allow easy patching of projects! Something not quite working
+like you want to? Quickly create a namespace package with just the
+patched module, and list it as a dependency.</p>
+<p>What do you use to allow plugins in your Python projects <img alt="🙂" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f642.png" title=":slightly_smiling_face:" />?</p>
 
               
   <hr>
@@ -983,7 +1074,7 @@ Just set the new <code>tox</code> entry point:</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../python-static-code-analysis-tools/" title="Python static code analysis tools" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../credits/" title="Credits" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -992,19 +1083,19 @@ Just set the new <code>tox</code> entry point:</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Python static code analysis tools
+                Credits
               </div>
             </div>
           </a>
         
         
-          <a href="../documentation-in-your-shell-scripts-using-shellman/" title="Documentation in your shell scripts using shellman" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../howto-edit-git-commit-contents/" title="How to edit the contents of a git commit" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Documentation in your shell scripts using shellman
+                How to edit the contents of a git commit
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
