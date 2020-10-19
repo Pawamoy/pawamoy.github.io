@@ -181,7 +181,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="posts/plugins-as-python-native-namespace-packages/" class="md-tabs__link">
+        <a href="posts/pass-makefile-args-as-typed-in-command-line/" class="md-tabs__link">
           Posts
         </a>
       
@@ -328,6 +328,18 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="posts/pass-makefile-args-as-typed-in-command-line/" title="Passing Makefile arguments to a command, as they are typed in the command line." class="md-nav__link">
+      Passing Makefile arguments to a command, as they are typed in the command line.
+    </a>
+  </li>
+
         
           
           
@@ -842,6 +854,36 @@ or some projects I worked on in the <a href="showcase/">Showcase</a>.</p>
   
     
   
+    
+  
+    
+      <hr>
+      <span class="post-date">Oct 17, 2020</span>
+      <h2 class="post-title"><a href="posts/pass-makefile-args-as-typed-in-command-line/" >Passing Makefile arguments to a command, as they are typed in the command line.</a></h1>
+      <p>In my Python projects,
+I use a combination of <a href="https://github.com/pawamoy/duty">Duty</a>
+(my task runner) and <code>make</code>.</p>
+<p>My <code>Makefile</code> declares the same tasks as the ones written in <code>duties.py</code>,
+but in a generic manner:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">TASKS</span> <span class="o">=</span> check <span class="nb">test</span> release
+
+<span class="nf">.PHONY</span><span class="o">:</span> <span class="k">$(</span><span class="nv">TASKS</span><span class="k">)</span>
+<span class="nf">$(TASKS)</span><span class="o">:</span>
+    @poetry run duty <span class="nv">$@</span>
+</code></pre></div>
+
+<p>So, instead of running <code>poetry run duty check</code>, I can run <code>make check</code>.
+Convenient, right?</p>
+<p>Except that some duties (tasks) accept arguments. For example:</p>
+<div class="highlight"><pre><span></span><code>poetry run duty release <span class="nv">version</span><span class="o">=</span><span class="m">0</span>.1.2
+</code></pre></div>
+
+<p>So how do I allow the <code>make</code> equivalent?</p>
+<div class="highlight"><pre><span></span><code>make release <span class="nv">version</span><span class="o">=</span><span class="m">0</span>.1.2
+</code></pre></div>
+
+
+      
     
   
     
