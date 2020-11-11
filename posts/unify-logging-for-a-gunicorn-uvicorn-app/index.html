@@ -63,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#gunicorn-uvicorn-version" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -393,9 +398,43 @@
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Unify Python logging for a Gunicorn/Uvicorn/FastAPI application
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
     <a href="./" title="Unify Python logging for a Gunicorn/Uvicorn/FastAPI application" class="md-nav__link md-nav__link--active">
       Unify Python logging for a Gunicorn/Uvicorn/FastAPI application
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gunicorn-uvicorn-version" class="md-nav__link">
+    Gunicorn + Uvicorn version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uvicorn-only-version" class="md-nav__link">
+    Uvicorn-only version
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -825,6 +864,41 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gunicorn-uvicorn-version" class="md-nav__link">
+    Gunicorn + Uvicorn version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uvicorn-only-version" class="md-nav__link">
+    Uvicorn-only version
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -851,6 +925,7 @@ here is what I have...</p>
 I didn't want to split logging configuration, Gunicorn configuration,
 and the rest of the code into multiple files, as it was harder to wrap
 my head around it.</p>
+<h2 id="gunicorn-uvicorn-version">Gunicorn + Uvicorn version<a class="headerlink" href="#gunicorn-uvicorn-version" title="Permanent link">¤</a></h2>
 <p>Everything is contained in this single file:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -1115,6 +1190,76 @@ and run our application!</p>
 <p>Well, I'm not really proud of this code, but it works!</p>
 <p><img alt="logs" src="/assets/gunicorn_logs.png" /></p>
 <p><img alt="logs_json" src="/assets/gunicorn_logs_json.png" /></p>
+<h2 id="uvicorn-only-version">Uvicorn-only version<a class="headerlink" href="#uvicorn-only-version" title="Permanent link">¤</a></h2>
+<p><small><em>Added Nov 11, 2020.</em></small></p>
+<p>The Uvicorn-only version is way more simple.
+Note that since this post was published the first time,
+a new Uvicorn version was released, which contained a fix
+for its logging configuration:
+could be in <a href="https://github.com/encode/uvicorn/compare/0.11.5...0.11.6">0.11.6</a>
+(<a href="https://github.com/encode/uvicorn/commit/e382440aa6b604ecdd323288279876767ab36443"><em>Don't override the root logger</em></a>)
+or <a href="https://github.com/encode/uvicorn/releases/tag/0.12.0">0.12.0</a>
+(<a href="https://github.com/encode/uvicorn/commit/df81b1684493ad97e8ba3fa323cc329089880a7c"><em>Dont set log level for root logger</em></a>).</p>
+<p>This simplifies a lot the <code>setup_logging</code> function,
+which now makes more sense and is easier to understand:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">uvicorn</span> <span class="kn">import</span> <span class="n">Config</span><span class="p">,</span> <span class="n">Server</span>
+<span class="kn">from</span> <span class="nn">loguru</span> <span class="kn">import</span> <span class="n">logger</span>
+
+<span class="n">LOG_LEVEL</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LOG_LEVEL&quot;</span><span class="p">,</span> <span class="s2">&quot;DEBUG&quot;</span><span class="p">))</span>
+<span class="n">JSON_LOGS</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;JSON_LOGS&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span> <span class="k">else</span> <span class="kc">False</span>
+
+
+<span class="k">class</span> <span class="nc">InterceptHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Handler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="c1"># Get corresponding Loguru level if it exists</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">level</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">level</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">levelname</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">level</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">levelno</span>
+
+        <span class="c1"># Find caller from where originated the logged message</span>
+        <span class="n">frame</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">currentframe</span><span class="p">(),</span> <span class="mi">2</span>
+        <span class="k">while</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_filename</span> <span class="o">==</span> <span class="n">logging</span><span class="o">.</span><span class="vm">__file__</span><span class="p">:</span>
+            <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_back</span>
+            <span class="n">depth</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">opt</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">exception</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">exc_info</span><span class="p">)</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">getMessage</span><span class="p">())</span>
+
+
+<span class="k">def</span> <span class="nf">setup_logging</span><span class="p">():</span>
+    <span class="c1"># intercept everything at the root logger</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[</span><span class="n">InterceptHandler</span><span class="p">()]</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LOG_LEVEL</span><span class="p">)</span>
+
+    <span class="c1"># remove every other logger&#39;s handlers</span>
+    <span class="c1"># and propagate to root logger</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">logging</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">loggerDict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">propagate</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># configure loguru</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">handlers</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;sink&quot;</span><span class="p">:</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="s2">&quot;serialize&quot;</span><span class="p">:</span> <span class="n">JSON_LOGS</span><span class="p">}])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">(</span>
+        <span class="n">Config</span><span class="p">(</span>
+            <span class="s2">&quot;my_app.app:app&quot;</span><span class="p">,</span>
+            <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="n">log_level</span><span class="o">=</span><span class="n">LOG_LEVEL</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="c1"># setup logging last, to make sure no library overwrites it</span>
+    <span class="c1"># (they shouldn&#39;t, but it happens)</span>
+    <span class="n">setup_logging</span><span class="p">()</span>
+
+    <span class="n">server</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
 
               
   <hr>
