@@ -19,7 +19,7 @@
     
     
       
-        <title>Save the logs generated during a pytest run as a job artifact on GitLab CI - pawamoy's website</title>
+        <title>Save the logs generated during a pytest run as a job artifact on GitLab/GitHub CI - pawamoy's website</title>
       
     
     
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Save the logs generated during a pytest run as a job artifact on GitLab CI
+              Save the logs generated during a pytest run as a job artifact on GitLab/GitHub CI
             
           </span>
         </div>
@@ -437,12 +437,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Save the logs generated during a pytest run as a job artifact on GitLab CI
+        Save the logs generated during a pytest run as a job artifact on GitLab/GitHub CI
         <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" title="Save the logs generated during a pytest run as a job artifact on GitLab CI" class="md-nav__link md-nav__link--active">
-      Save the logs generated during a pytest run as a job artifact on GitLab CI
+    <a href="./" title="Save the logs generated during a pytest run as a job artifact on GitLab/GitHub CI" class="md-nav__link md-nav__link--active">
+      Save the logs generated during a pytest run as a job artifact on GitLab/GitHub CI
     </a>
     
       
@@ -480,6 +480,13 @@
         <li class="md-nav__item">
   <a href="#logs-artifact-on-gitlab-ci" class="md-nav__link">
     Logs artifact on GitLab CI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logs-artifact-in-github-workflow" class="md-nav__link">
+    Logs artifact in GitHub Workflow
   </a>
   
 </li>
@@ -920,6 +927,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#logs-artifact-in-github-workflow" class="md-nav__link">
+    Logs artifact in GitHub Workflow
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -931,7 +945,7 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>Save the logs generated during a pytest run as a job artifact on GitLab CI</h1>
+  <h1>Save the logs generated during a pytest run as a job artifact on GitLab/GitHub CI</h1>
   <p class="post-meta">
     Published Oct 17, 2019
     by Timothée Mazzucotelli
@@ -1101,6 +1115,37 @@ as an artifact.</p>
 <p><img alt="artifacts1" src="/assets/gitlab_artifacts1.png" /></p>
 <p>Or even from the pipelines pages:</p>
 <p><img alt="artifacts2" src="/assets/gitlab_artifacts2.png" /></p>
+<h2 id="logs-artifact-in-github-workflow">Logs artifact in GitHub Workflow<a class="headerlink" href="#logs-artifact-in-github-workflow" title="Permanent link">¤</a></h2>
+<p>Same thing, but for a GitHub workflow:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
+
+  <span class="nt">tests</span><span class="p">:</span>
+
+    <span class="nt">strategy</span><span class="p">:</span>
+      <span class="nt">fail-fast</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">matrix</span><span class="p">:</span>
+        <span class="nt">os</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">ubuntu-latest</span><span class="p p-Indicator">,</span> <span class="nv">macos-latest</span><span class="p p-Indicator">,</span> <span class="nv">windows-latest</span><span class="p p-Indicator">]</span>
+        <span class="nt">python-version</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">3.6</span><span class="p p-Indicator">,</span> <span class="nv">3.7</span><span class="p p-Indicator">,</span> <span class="nv">3.8</span><span class="p p-Indicator">,</span> <span class="nv">3.9</span><span class="p p-Indicator">]</span>
+
+    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ matrix.os }}</span>
+
+    <span class="c1"># setup steps, etc.</span>
+
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Run the test suite</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">poetry run duty test</span>  <span class="c1"># or your actual test command</span>
+
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Archive tests logs</span>
+      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v2</span>
+      <span class="nt">if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ failure() }}</span>
+      <span class="nt">with</span><span class="p">:</span>
+        <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tests-logs-${{ matrix.os }}-py${{ matrix.python-version }}</span>
+        <span class="nt">path</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+          <span class="no">tests/logs</span>
+        <span class="nt">retention-days</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">7</span>
+</code></pre></div>
+
+<p>You'll be able to download the artifacts from the workflow page:</p>
+<p><img alt="artifacts_github" src="/assets/github_artifacts.png" /></p>
 
               
   <hr>
