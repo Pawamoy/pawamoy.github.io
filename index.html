@@ -908,17 +908,14 @@ but in a generic manner:</p>
 <span class="nf">$(TASKS)</span><span class="o">:</span>
     @poetry run duty <span class="nv">$@</span>
 </code></pre></div>
-
 <p>So, instead of running <code>poetry run duty check</code>, I can run <code>make check</code>.
 Convenient, right?</p>
 <p>Except that some duties (tasks) accept arguments. For example:</p>
 <div class="highlight"><pre><span></span><code>poetry run duty release <span class="nv">version</span><span class="o">=</span><span class="m">0</span>.1.2
 </code></pre></div>
-
 <p>So how do I allow the <code>make</code> equivalent?</p>
 <div class="highlight"><pre><span></span><code>make release <span class="nv">version</span><span class="o">=</span><span class="m">0</span>.1.2
 </code></pre></div>
-
 
       
     

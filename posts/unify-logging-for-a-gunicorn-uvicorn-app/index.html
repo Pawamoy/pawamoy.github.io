@@ -1036,7 +1036,6 @@ my head around it.</p>
 
     <span class="n">StandaloneApplication</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
-
 <p>If you are in a hurry, copy-paste it, change the Gunicorn options at the end,
 and try it!</p>
 <p>If you're not, I will explain each part below.</p>
@@ -1049,7 +1048,6 @@ and try it!</p>
 <span class="kn">from</span> <span class="nn">gunicorn.glogging</span> <span class="kn">import</span> <span class="n">Logger</span>
 <span class="kn">from</span> <span class="nn">loguru</span> <span class="kn">import</span> <span class="n">logger</span>
 </code></pre></div>
-
 <p>This part is easy, we simply import the things we need.
 The Gunicorn <code>BaseApplication</code> so we can run Gunicorn directly from this script,
 and its <code>Logger</code> that we will override a bit.
@@ -1058,7 +1056,6 @@ to have a pretty log format, or to serialize them.</p>
 <hr />
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">my_app.app</span> <span class="kn">import</span> <span class="n">app</span>
 </code></pre></div>
-
 <p>In my project, I have a <code>my_app</code> package with an <code>app</code> module.
 My FastAPI application is declared in this module, something like
 <code>app = FastAPI()</code>.</p>
@@ -1067,7 +1064,6 @@ My FastAPI application is declared in this module, something like
 <span class="n">JSON_LOGS</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;JSON_LOGS&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span> <span class="k">else</span> <span class="kc">False</span>
 <span class="n">WORKERS</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GUNICORN_WORKERS&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">))</span>
 </code></pre></div>
-
 <p>We setup some values from environment variables, useful for development vs.
 production setups. <code>JSON_LOGS</code> tells if we should serialize the logs to JSON,
 and <code>WORKERS</code> tells how many workers we want to have.</p>
@@ -1088,7 +1084,6 @@ and <code>WORKERS</code> tells how many workers we want to have.</p>
 
         <span class="n">logger</span><span class="o">.</span><span class="n">opt</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">exception</span><span class="o">=</span><span class="n">record</span><span class="o">.</span><span class="n">exc_info</span><span class="p">)</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">getMessage</span><span class="p">())</span>
 </code></pre></div>
-
 <p>This code is copy-pasted from Loguru's documentation!
 This handler will be used to intercept the logs emitted by libraries
 and re-emit them through Loguru.</p>
@@ -1103,7 +1098,6 @@ and re-emit them through Loguru.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">error_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LOG_LEVEL</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">access_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LOG_LEVEL</span><span class="p">)</span>
 </code></pre></div>
-
 <p>This code was copied from this
 <a href="https://github.com/benoitc/gunicorn/issues/1572#issuecomment-430747811">GitHub comment</a>
 by <a href="https://github.com/dcosson">@dcosson</a>. Thanks!
@@ -1129,7 +1123,6 @@ so its logs can be formatted like the rest.</p>
     <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">application</span>
 </code></pre></div>
-
 <p>This code is taken from
 <a href="https://docs.gunicorn.org/en/stable/custom.html">Gunicorn's documentation</a>.
 We declare a simple Gunicorn application that we will be able to run.
@@ -1141,7 +1134,6 @@ It accepts all Gunicorn's options.</p>
     <span class="c1"># logging.root.handlers = [intercept_handler]</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">LOG_LEVEL</span><span class="p">)</span>
 </code></pre></div>
-
 <p>We simply instantiate our interception handler,
 and set the log level on the root logger.</p>
 <p>Once again, I fail to understand how this works exactly, as the two commented
@@ -1164,7 +1156,6 @@ everything, but it was not enough (logs were not all intercepted).</p>
             <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[</span><span class="n">intercept_handler</span><span class="p">]</span>
 </code></pre></div>
-
 <p>Here we iterate on all the possible loggers declared by libraries
 to override their handlers with our interception handler.
 This is where we actually configure every logger to behave the same.</p>
@@ -1177,7 +1168,6 @@ nested loggers deeper than two.</p>
 <hr />
 <div class="highlight"><pre><span></span><code>    <span class="n">logger</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">handlers</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;sink&quot;</span><span class="p">:</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="s2">&quot;serialize&quot;</span><span class="p">:</span> <span class="n">JSON_LOGS</span><span class="p">}])</span>
 </code></pre></div>
-
 <p>Here we configure Loguru to write on the standard output,
 and to serialize logs if needed.</p>
 <p>At some point I was also using <code>activation=[("", True)]</code>
@@ -1195,7 +1185,6 @@ but it seems it's not required either.</p>
 
     <span class="n">StandaloneApplication</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
-
 <p>Finally, we set our Gunicorn options, wiring things up,
 and run our application!</p>
 <hr />

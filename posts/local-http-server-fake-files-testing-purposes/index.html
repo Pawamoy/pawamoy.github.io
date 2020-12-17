@@ -1066,7 +1066,6 @@ It lives in the <code>http.server</code> module, and you can run it in
 a single command:</p>
 <div class="highlight"><pre><span></span><code>python -m http.server
 </code></pre></div>
-
 <p>This will serve the contents of your current working directory
 on <code>http://0.0.0.0:8000</code>.</p>
 <p>I was already using it in some tests when I needed to feed
@@ -1119,7 +1118,6 @@ and eventually ended up with this code:</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running HTTP server on port 8000&quot;</span><span class="p">)</span>
     <span class="n">run_http_server</span><span class="p">(</span><span class="mi">8000</span><span class="p">)</span>
 </code></pre></div>
-
 <p>This snippet can be run directly with <code>python http_server.py</code>.
 The <code>run_http_server</code> can also be imported somewhere else.</p>
 <p>This server accepts GET requests on the path <code>/{size}</code>,
@@ -1140,7 +1138,6 @@ we can use. It's as simple as:</p>
         <span class="k">finally</span><span class="p">:</span>
             <span class="n">httpd</span><span class="o">.</span><span class="n">server_close</span><span class="p">()</span>
 </code></pre></div>
-
 <h3 id="reusable-address">Reusable address<a class="headerlink" href="#reusable-address" title="Permanent link">¤</a></h3>
 <p>Even with the <code>finally</code> clause,
 I noticed that the address kept being "in use"
@@ -1158,7 +1155,6 @@ of the socket server:</p>
         <span class="k">finally</span><span class="p">:</span>
             <span class="n">httpd</span><span class="o">.</span><span class="n">server_close</span><span class="p">()</span>
 </code></pre></div>
-
 <h3 id="still-not-enough">Still not enough<a class="headerlink" href="#still-not-enough" title="Permanent link">¤</a></h3>
 <p>But even with all this, many tests were still failing,
 and the standard error captured by <code>pytest</code> showed
@@ -1186,7 +1182,6 @@ so I gave it a try. A very small amount of code was needed:</p>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">StreamingResponse</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;1&quot;</span> <span class="o">*</span> <span class="n">size</span><span class="p">),</span> <span class="n">media_type</span><span class="o">=</span><span class="s2">&quot;application/octet-stream&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <p>I went with a <code>StreamingResponse</code>
 because the <code>FileResponse</code> only accepts paths to actual files.</p>
 <p>To run the server, I run this command: <code>uvicorn http_server:app</code>.
@@ -1215,7 +1210,6 @@ we can store the strings themselves!</p>
         <span class="n">allocated</span><span class="p">[</span><span class="n">size</span><span class="p">]</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;1&quot;</span> <span class="o">*</span> <span class="n">size</span>
     <span class="k">return</span> <span class="n">StreamingResponse</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">allocated</span><span class="p">[</span><span class="n">size</span><span class="p">]),</span> <span class="n">media_type</span><span class="o">=</span><span class="s2">&quot;application/octet-stream&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <p>But even then, why allocating memory at all?
 Couldn't we have a really "virtual" file,
 some kind of generator that generates chunks of data,
@@ -1233,7 +1227,6 @@ so here's what I tried:</p>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">StreamingResponse</span><span class="p">(</span><span class="n">virtual_file</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">media_type</span><span class="o">=</span><span class="s2">&quot;application/octet-stream&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <p>It seems to work, and the memory footprint is much, much lower,
 but I get a lot of <code>socket.send() raised exception.</code> messages from FastAPI,
 and a test occasionally fails. Anyway, I think it's good enough.</p>
@@ -1276,7 +1269,6 @@ we can accept a unit suffix:</p>
         <span class="n">media_type</span><span class="o">=</span><span class="s2">&quot;application/octet-stream&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div>
-
 <p>Note that the route <code>size</code> argument is not an integer anymore but a string.
 It allows us to send GET requests like <code>/4k</code> or <code>/100m</code>,
 values that are then translated to bytes.</p>
@@ -1351,7 +1343,6 @@ with "session" scope and "automatic use":</p>
     <span class="n">process</span><span class="o">.</span><span class="n">kill</span><span class="p">()</span>
     <span class="n">process</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
 </code></pre></div>
-
 <p>With this, each time you run your test suite,
 exactly one instance of the HTTP server will run.</p>
 

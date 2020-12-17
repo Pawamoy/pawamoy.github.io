@@ -990,7 +990,6 @@ when an optional Jinja clause is false.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">---</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">good</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">tested: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="se">\n</span><span class="s2">valid: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">good</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">¤</a></h2>
 <p>Only 19 different combinations are valid on the 448 tested ones:</p>
 <div class="highlight"><pre><span></span><code>  a
@@ -1124,18 +1123,15 @@ when an optional Jinja clause is false.</p>
 tested: 448
 valid: 19
 </code></pre></div>
-
 <p>Each one of these will render as </p>
 <div class="highlight"><pre><span></span><code>  a
   b
   c
 </code></pre></div>
-
 <p>...when the condition is true, and as</p>
 <div class="highlight"><pre><span></span><code>  a
   c
 </code></pre></div>
-
 <p>...when the condition is false.</p>
 <p>Now you just have to pick the style you prefer!</p>
 <p>I find these three particularly readable (the first two are better when <code>b</code>  spans on multiple lines):</p>
@@ -1145,25 +1141,21 @@ valid: 19
   {%- endif %}
   c
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code>  a
   {% if x -%}
   b
   {% endif -%}
   c
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code>  a{% if x %}
   b{% endif %}
   c
 </code></pre></div>
-
 <p>The third example readability can also be improved:</p>
 <div class="highlight"><pre><span></span><code>  a   {%- if x %}
   b   {%- endif %}
   c
 </code></pre></div>
-
 <p>Here is an example with blank lines in <code>b</code>'s contents.
 The first one collapses contents up, while the second collapses content down.</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Run</span><span class="p">:</span>
@@ -1180,7 +1172,6 @@ The first one collapses contents up, while the second collapses content down.</p
     <span class="k">def</span> <span class="nf">resume</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;resuming&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Run</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">pause</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pausing&quot;</span><span class="p">)</span>

@@ -973,17 +973,14 @@ but in a generic manner:</p>
 <span class="nf">$(TASKS)</span><span class="o">:</span>
     @poetry run duty <span class="nv">$@</span>
 </code></pre></div>
-
 <p>So, instead of running <code>poetry run duty check</code>, I can run <code>make check</code>.
 Convenient, right?</p>
 <p>Except that some duties (tasks) accept arguments. For example:</p>
 <div class="highlight"><pre><span></span><code>poetry run duty release <span class="nv">version</span><span class="o">=</span><span class="m">0</span>.1.2
 </code></pre></div>
-
 <p>So how do I allow the <code>make</code> equivalent?</p>
 <div class="highlight"><pre><span></span><code>make release <span class="nv">version</span><span class="o">=</span><span class="m">0</span>.1.2
 </code></pre></div>
-
 <!--more-->
 
 <h2 id="experiments">Experiments<a class="headerlink" href="#experiments" title="Permanent link">¤</a></h2>
@@ -998,7 +995,6 @@ Convenient, right?</p>
 <span class="nf">$(TASKS)</span><span class="o">:</span>
     @poetry run duty <span class="nv">$@</span>
 </code></pre></div>
-
 <p>Meh. My Makefile rules are not generic anymore.
 Besides, what if the argument is optional?
 If I don't pass it when running <code>make</code>,
@@ -1009,16 +1005,14 @@ in the command just as they are typed on the command line:</p>
 <div class="highlight"><pre><span></span><code>make release
 <span class="c1"># =&gt; poetry run duty release</span>
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code>make release <span class="nv">version</span><span class="o">=</span><span class="m">0</span>.1.2
 <span class="c1"># =&gt; poetry run duty release version=0.1.2</span>
 </code></pre></div>
-
 <p>Well, after a few hours playing with Makefiles features,
 I got a nice solution!</p>
 <h2 id="sorcery">Sorcery<a class="headerlink" href="#sorcery" title="Permanent link">¤</a></h2>
 <p>Let me sprinkle this dark magic right here:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">args</span> <span class="o">=</span> <span class="k">$(</span>foreach a,<span class="k">$($(</span>subst -,_,<span class="nv">$1</span><span class="k">)</span>_args<span class="k">)</span>,<span class="k">$(if</span> <span class="k">$(</span>value <span class="nv">$a</span><span class="k">)</span>,<span class="nv">$a</span><span class="o">=</span><span class="k">$(</span><span class="nv">$a</span><span class="k">)))</span>
+<div class="highlight"><pre><span></span><code><span class="nv">args</span> <span class="o">=</span> <span class="k">$(</span>foreach a,<span class="k">$($(</span>subst -,_,<span class="nv">$1</span><span class="k">)</span>_args<span class="k">)</span>,<span class="k">$(if</span> <span class="k">$(</span>value <span class="nv">$a</span><span class="k">)</span>,<span class="nv">$a</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nv">$a</span><span class="k">)</span><span class="s2">&quot;</span><span class="k">))</span>
 
 <span class="nv">check_args</span> <span class="o">=</span> files
 <span class="nv">docs_serve_args</span> <span class="o">=</span> host port
@@ -1035,12 +1029,10 @@ I got a nice solution!</p>
 <span class="nf">$(TASKS)</span><span class="o">:</span>
     @poetry run duty <span class="nv">$@</span> <span class="k">$(</span>call args,<span class="nv">$@</span><span class="k">)</span>
 </code></pre></div>
-
 <p>What happens here?!</p>
 <h2 id="recipe">Recipe<a class="headerlink" href="#recipe" title="Permanent link">¤</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nv">args</span> <span class="o">=</span> <span class="k">$(</span>foreach a,<span class="k">$($(</span>subst -,_,<span class="nv">$1</span><span class="k">)</span>_args<span class="k">)</span>,<span class="k">$(if</span> <span class="k">$(</span>value <span class="nv">$a</span><span class="k">)</span>,<span class="nv">$a</span><span class="o">=</span><span class="k">$(</span><span class="nv">$a</span><span class="k">)))</span>
+<div class="highlight"><pre><span></span><code><span class="nv">args</span> <span class="o">=</span> <span class="k">$(</span>foreach a,<span class="k">$($(</span>subst -,_,<span class="nv">$1</span><span class="k">)</span>_args<span class="k">)</span>,<span class="k">$(if</span> <span class="k">$(</span>value <span class="nv">$a</span><span class="k">)</span>,<span class="nv">$a</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nv">$a</span><span class="k">)</span><span class="s2">&quot;</span><span class="k">))</span>
 </code></pre></div>
-
 <p>The heart of the magic. We declare a function called <code>args</code>.
 We later call it with <code>$(call args,$@)</code>.</p>
 <p>It could be described like this:</p>
@@ -1053,14 +1045,12 @@ for each argument name
   if argument value is not empty
     print &quot;argument name = argument value&quot;
 </code></pre></div>
-
 <p>This is why we declare our arguments like this:</p>
 <div class="highlight"><pre><span></span><code><span class="nv">check_args</span> <span class="o">=</span> files
 <span class="nv">docs_serve_args</span> <span class="o">=</span> host port
 <span class="nv">release_args</span> <span class="o">=</span> version
 <span class="nv">test_args</span> <span class="o">=</span> match
 </code></pre></div>
-
 <p>When running <code>make docs-serve host=0.0.0.0</code>,
 the <code>args</code> function will do the following:</p>
 <div class="highlight"><pre><span></span><code>args_ref := &quot;docs-serve&quot;
@@ -1075,7 +1065,6 @@ arg &quot;port&quot;:
   variable &quot;port&quot; is empty
   print nothing
 </code></pre></div>
-
 <p>So when calling <code>$(call args,$@)</code>, <code>$@</code> is replaced
 by the rule name, which is <code>docs-serve</code> in this example,
 and <code>host=0.0.0.0</code> is added to the command.</p>
@@ -1087,11 +1076,10 @@ The following commands are all equivalent:</p>
 make hello foo <span class="nv">bar</span><span class="o">=</span>baz <span class="nv">world</span><span class="o">=</span>earth
 make <span class="nv">bar</span><span class="o">=</span>baz hello foo <span class="nv">world</span><span class="o">=</span>earth
 </code></pre></div>
-
 <p>It can be seen as an advantage but as an inconvenient as well,
 because you cannot have arguments with the same name for different commands.
 Or at least, you could not use these commands and arguments at the same time.</p>
-<div class="highlight"><pre><span></span><code><span class="nv">args</span> <span class="o">=</span> <span class="k">$(</span>foreach a,<span class="k">$($(</span>subst -,_,<span class="nv">$1</span><span class="k">)</span>_args<span class="k">)</span>,<span class="k">$(if</span> <span class="k">$(</span>value <span class="nv">$a</span><span class="k">)</span>,<span class="nv">$a</span><span class="o">=</span><span class="k">$(</span><span class="nv">$a</span><span class="k">)))</span>
+<div class="highlight"><pre><span></span><code><span class="nv">args</span> <span class="o">=</span> <span class="k">$(</span>foreach a,<span class="k">$($(</span>subst -,_,<span class="nv">$1</span><span class="k">)</span>_args<span class="k">)</span>,<span class="k">$(if</span> <span class="k">$(</span>value <span class="nv">$a</span><span class="k">)</span>,<span class="nv">$a</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nv">$a</span><span class="k">)</span><span class="s2">&quot;</span><span class="k">))</span>
 
 <span class="nv">rule1_args</span> <span class="o">=</span> version
 <span class="nv">rule2_args</span> <span class="o">=</span> version name
@@ -1102,7 +1090,6 @@ Or at least, you could not use these commands and arguments at the same time.</p
 <span class="nf">$(TASKS)</span><span class="o">:</span>
     @poetry run duty <span class="nv">$@</span> <span class="k">$(</span>call args,<span class="nv">$@</span><span class="k">)</span>
 </code></pre></div>
-
 <p>Here <code>rule1</code> and <code>rule2</code> both accept a <code>version</code> argument.</p>
 <div class="highlight"><pre><span></span><code>make rule1 <span class="nv">version</span><span class="o">=</span><span class="m">1</span>  <span class="c1"># OK</span>
 
@@ -1114,7 +1101,6 @@ make rule1 <span class="nv">version</span><span class="o">=</span><span class="m
 <span class="c1"># I couldn&#39;t get the courage to try more of these dark arts</span>
 <span class="c1"># so I don&#39;t know what would happen here...</span>
 </code></pre></div>
-
 <h2 id="addendum">Addendum<a class="headerlink" href="#addendum" title="Permanent link">¤</a></h2>
 <p>Not a real addendum.</p>
 <p>Share your tricks!</p>

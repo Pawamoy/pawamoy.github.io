@@ -958,7 +958,6 @@ side and integrate the plugin directly within your code.</p>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;my_new_option&#39;</span><span class="p">)</span>
     <span class="c1"># read argparse&#39;s doc online to see more complex examples</span>
 </code></pre></div>
-
 <h2 id="setup-the-entry-points">Setup the entry points<a class="headerlink" href="#setup-the-entry-points" title="Permanent link">¤</a></h2>
 <p>Tox has an automagic system that will see installed plugins and load them when you call it.
 Just set the new <code>tox</code> entry point:</p>
@@ -972,7 +971,6 @@ Just set the new <code>tox</code> entry point:</p>
     <span class="o">...</span>
 <span class="p">)</span>
 </code></pre></div>
-
 <p>Installing your package will make it visible to tox.</p>
 <h2 id="update-your-code">Update your code<a class="headerlink" href="#update-your-code" title="Permanent link">¤</a></h2>
 <p>In your code you will now be able to use the <code>my_new_option</code> option in tox's config object, and do whatever you want with it!</p>
@@ -982,7 +980,6 @@ Just set the new <code>tox</code> entry point:</p>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">option</span><span class="o">.</span><span class="n">my_new_option</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Voilà.</p>
 <p>Of course your plugin could be much more complex, but this is another story.</p>
 

@@ -1054,7 +1054,6 @@ tutorial:</p>
     │   └── wsgi.py
     └── manage.py
 </code></pre></div>
-
 <p>Now that you have a working Django project, you can run it by going into the
 <code>hello</code> directory and type <code>./manage.py runserver</code>. Go to
 <a href="http://localhost:8000">http://localhost:8000</a> to see the result.</p>
@@ -1084,7 +1083,6 @@ inside the Django project. If you are one directory above, use
 <span class="c"># define the default command to run when starting the container</span>
 <span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;gunicorn&quot;</span><span class="p">,</span> <span class="s2">&quot;--chdir&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;--bind&quot;</span><span class="p">,</span> <span class="s2">&quot;:8000&quot;</span><span class="p">,</span> <span class="s2">&quot;hello.wsgi:application&quot;</span><span class="p">]</span>
 </code></pre></div>
-
 <p>The Dockerfile must be placed at the root of your test directory. As a reminder:</p>
 <div class="highlight"><pre><span></span><code>.                         # Your current directory, created for this tutorial
 ├── hello                 # The Django project
@@ -1092,7 +1090,6 @@ inside the Django project. If you are one directory above, use
 │   └── manage.py
 └── Dockerfile            # Your Dockerfile
 </code></pre></div>
-
 <p>We are now able to build our container with <code>docker build . -t hello</code>, and to
 start it with <code>docker run -p 8000:8000 hello</code>. The <code>-p 8000:8000</code> option says to
 bind the port 8000 of the host to the port 8000 of the container, allowing you
@@ -1119,7 +1116,6 @@ Since we only need Django and Gunicorn, our Pipfile will be very simple:</p>
 <span class="c1"># our Dockerfile is based on Python 3.6</span>
 <span class="n">python_version</span> <span class="o">=</span> <span class="s">&quot;3.6&quot;</span>
 </code></pre></div>
-
 <p>Just like the Dockerfile, Pipfile must be placed at the root of the project.</p>
 <div class="highlight"><pre><span></span><code>.
 ├── hello
@@ -1128,7 +1124,6 @@ Since we only need Django and Gunicorn, our Pipfile will be very simple:</p>
 ├── Dockerfile
 └── Pipfile
 </code></pre></div>
-
 <p>Simply run <code>pipenv lock</code> to create Pipfile.lock from Pipfile.</p>
 <p>Now we need to update our Dockerfile to use pipenv:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># start from an official image</span>
@@ -1152,7 +1147,6 @@ Since we only need Django and Gunicorn, our Pipfile will be very simple:</p>
 <span class="c"># define the default command to run when starting the container</span>
 <span class="k">CMD</span> <span class="p">[</span><span class="s2">&quot;gunicorn&quot;</span><span class="p">,</span> <span class="s2">&quot;--chdir&quot;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;--bind&quot;</span><span class="p">,</span> <span class="s2">&quot;:8000&quot;</span><span class="p">,</span> <span class="s2">&quot;hello.wsgi:application&quot;</span><span class="p">]</span>
 </code></pre></div>
-
 <p>You can rebuild the image with <code>docker build . -t hello</code> and try to run it again
 to see if everything works correctly.</p>
 <h2 id="compose-add-a-container-for-nginx">Compose: add a container for NginX<a class="headerlink" href="#compose-add-a-container-for-nginx" title="Permanent link">¤</a></h2>
@@ -1168,7 +1162,6 @@ project, like following:</p>
 ├── Dockerfile
 └── Pipfile
 </code></pre></div>
-
 <p>We are gonna use the version 3 of the configuration syntax. First, we add
 the Django+Gunicorn service:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span> <span class="s">&#39;3&#39;</span>
@@ -1181,7 +1174,6 @@ the Django+Gunicorn service:</p>
     <span class="nt">ports</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">8000:8000</span>
 </code></pre></div>
-
 <p>We simply tell Docker Compose that the <code>djangoapp</code> service must use an image
 that is built from the current directory, therefore looking for our Dockerfile.
 The <code>volumes</code> directive tells to bind the current directory of the host to the
@@ -1211,7 +1203,6 @@ directory with <code>_djangoapp</code> appended).</p>
     <span class="nt">depends_on</span><span class="p">:</span>  <span class="c1"># &lt;-- wait for djangoapp to be &quot;ready&quot; before starting this service</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">djangoapp</span>
 </code></pre></div>
-
 <p>Note that we removed the <code>ports</code> directive from our <code>djangoapp</code> service. Indeed
 we will not communicate directly with Gunicorn anymore, but with NginX. We still
 want to access our app at <a href="http://localhost:8000">http://localhost:8000</a>, and
@@ -1223,7 +1214,6 @@ Let's create it and see what's inside:</p>
 <div class="highlight"><pre><span></span><code>mkdir -p config/nginx/conf.d
 touch config/nginx/conf.d/local.conf
 </code></pre></div>
-
 <p>You should now have the following files and directories:</p>
 <div class="highlight"><pre><span></span><code>.
 ├── config
@@ -1238,7 +1228,6 @@ touch config/nginx/conf.d/local.conf
 ├── Pipfile
 └── Pipfile.lock
 </code></pre></div>
-
 <p>The <code>config/nginx/conf.d/local.conf</code> file contains our NginX configuration:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># first we declare our upstream server, which is our Gunicorn application</span>
 <span class="k">upstream</span> <span class="s">hello_server</span> <span class="p">{</span>
@@ -1262,7 +1251,6 @@ touch config/nginx/conf.d/local.conf
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>But before we try this out, remember that we need a bridge to make our services
 able to communicate?</p>
 <p>Update your <code>docker-compose.yml</code> as follow:</p>
@@ -1292,7 +1280,6 @@ able to communicate?</p>
   <span class="nt">nginx_network</span><span class="p">:</span>
     <span class="nt">driver</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">bridge</span>
 </code></pre></div>
-
 <p>Run <code>docker-compose up</code> and see if you can still see the Django default page
 at <a href="http://localhost:8000">http://localhost:8000</a>.</p>
 <h2 id="compose-add-containers-for-one-or-more-postgres-databases">Compose: add containers for one or more Postgres databases<a class="headerlink" href="#compose-add-containers-for-one-or-more-postgres-databases" title="Permanent link">¤</a></h2>
@@ -1319,7 +1306,6 @@ our <code>docker-compose.yml</code> file.</p>
 <span class="c1"># our Dockerfile is based on Python 3.6</span>
 <span class="n">python_version</span> <span class="o">=</span> <span class="s">&quot;3.6&quot;</span>
 </code></pre></div>
-
 <p>Don't forget to run <code>pipenv lock</code> to update your lock file, and rebuild your
   Docker image with <code>docker-compose build</code>.</p>
 <ul>
@@ -1332,7 +1318,6 @@ our <code>docker-compose.yml</code> file.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>...to:</p>
 <div class="highlight"><pre><span></span><code><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
@@ -1345,7 +1330,6 @@ our <code>docker-compose.yml</code> file.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <p>As you can see, we used <code>database1</code> everywhere, for the name, user, password
   and host. In fact, we can change these values to whatever suits us. But we
   must ensure the database container will use the same values! To do that, we
@@ -1355,13 +1339,11 @@ our <code>docker-compose.yml</code> file.</p>
 <div class="highlight"><pre><span></span><code>mkdir config/db
 touch config/db/database1_env
 </code></pre></div>
-
 <p>The contents of <code>config/db/database1_env</code> must then be:</p>
 <div class="highlight"><pre><span></span><code>POSTGRES_USER=database1_role
 POSTGRES_PASSWORD=database1_password
 POSTGRES_DB=database1
 </code></pre></div>
-
 <p>These variable are used by the Postgres Docker image, for more information
   please check out the documentation on
   <a href="https://docs.docker.com/samples/library/postgres/#postgres_user">docs.docker.com</a>
@@ -1418,7 +1400,6 @@ POSTGRES_DB=database1
 <span class="nt">volumes</span><span class="p">:</span>
   <span class="nt">database1_volume</span><span class="p">:</span>
 </code></pre></div>
-
 <p>You should be able to understand everything here. However, we added two new
   things: the <code>database1: volumes:</code> directive, and the root <code>volumes:</code>
   directive. You need to declare your volumes in the root <code>volumes:</code> directive
@@ -1435,7 +1416,6 @@ service and run the migration command inside it:</p>
 <div class="highlight"><pre><span></span><code>docker-compose build  <span class="c1"># to make sure everything is up-to-date</span>
 docker-compose run --rm djangoapp /bin/bash -c <span class="s2">&quot;cd hello; ./manage.py migrate&quot;</span>
 </code></pre></div>
-
 <p>From now on, it should be really easy to add other databases: just add other
 database services (<code>database2</code>) with their networks volumes (remember to
 connect the networks and bind the volumes), update your DATABASES setting in
@@ -1484,7 +1464,6 @@ in the Django project settings.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>Django project settings:</li>
 </ul>
@@ -1494,7 +1473,6 @@ in the Django project settings.</p>
 <span class="c1"># do the same for media files, it must match /opt/services/djangoapp/media/</span>
 <span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">)),</span> <span class="s1">&#39;media&#39;</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>Volumes in <code>docker-compose.yml</code>:</li>
 </ul>
@@ -1547,13 +1525,11 @@ in the Django project settings.</p>
   <span class="nt">static_volume</span><span class="p">:</span>  <span class="c1"># &lt;-- declare the static volume</span>
   <span class="nt">media_volume</span><span class="p">:</span>  <span class="c1"># &lt;-- declare the media volume</span>
 </code></pre></div>
-
 <ul>
 <li>And finally, collect the static files each time you need to update them, by running:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>docker-compose run djangoapp hello/manage.py collectstatic --no-input
 </code></pre></div>
-
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">¤</a></h2>
 <p>Here are the resources I used to write this tutorial:</p>
 <ul>

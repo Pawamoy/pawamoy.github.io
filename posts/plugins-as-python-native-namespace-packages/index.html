@@ -963,7 +963,6 @@ drop the <code>__init__.py</code>!</p>
 my_namespace_package/
     my_module_b.py
 </code></pre></div>
-
 <p>Install both packages and you will be able to import
 both <code>my_module_a</code> and <code>my_module_b</code> from <code>my_namespace_package</code>.</p>
 <p>If you want to provide deeper modules, you will have to drop
@@ -984,7 +983,6 @@ package/
         level2/
             plugin_module.py
 </code></pre></div>
-
 <p>Notice how we don't have any <code>__init__.py</code> in <code>package</code>, <code>level1</code> and <code>level2</code>.
 This is required for the plugin package to add modules there.</p>
 <p>In this example, <code>subpackage</code> has an <code>__init__.py</code> file,
@@ -1010,12 +1008,10 @@ package/
             __init__.py
             plugin_module.py
 </code></pre></div>
-
 <p>Each <code>__init__.py</code> must contain this code:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pkgutil</span> <span class="kn">import</span> <span class="n">extend_path</span>
 <span class="n">__path__</span> <span class="o">=</span> <span class="n">extend_path</span><span class="p">(</span><span class="n">__path__</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
 </code></pre></div>
-
 <p>Basically, it's a bit like the native way,
 except that you keep your <code>__init__.py</code> modules,
 <strong>but they must be identical across all packages!</strong></p>
@@ -1048,7 +1044,6 @@ package/
         level2/
             plugin_module.py
 </code></pre></div>
-
 <p>The order of installation would not matter of course,
 as merging the main package into the plugin one, or the opposite,
 would result in the same final package on the disk:</p>
@@ -1062,7 +1057,6 @@ package/
             builtin_module.py
             plugin_module.py
 </code></pre></div>
-
 <p>The main package author doesn't even have to think about plugins
 and prepare the field by removing <code>__init__.py</code> where it is needed.
 Instead, they just write their package normally.</p>
