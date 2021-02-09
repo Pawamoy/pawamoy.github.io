@@ -11,7 +11,7 @@
         <meta name="description" content="Findings, thoughts, tutorials, work. Pieces of my mind!">
       
       
-        <link rel="canonical" href="https://pawamoy.github.io/posts/dual-screens-setup-nvidia-bunsenlabs-debian-jessie/">
+        <link rel="canonical" href="https://pawamoy.github.io/posts/2021-modern-python-project-template/">
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens - pawamoy's website</title>
+        <title>2021-modern Python development - pawamoy's website</title>
       
     
     
@@ -63,11 +63,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#the-fun-way" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -92,7 +87,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens
+              2021-modern Python development
             
           </span>
         </div>
@@ -154,16 +149,14 @@
         
           
 
-  
-
-<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
         Home
       </a>
     
@@ -284,12 +277,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Posts
@@ -467,12 +458,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
     
     <label class="md-nav__link" for="nav-4-3">
       2018
@@ -502,66 +491,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" title="How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../dual-screens-setup-nvidia-bunsenlabs-debian-jessie/" title="How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens" class="md-nav__link">
       How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-fun-way" class="md-nav__link">
-    The fun way
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-quick-way" class="md-nav__link">
-    The quick way
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#if-when-things-go-wrong" class="md-nav__link">
-    ~~If~~ When things go wrong
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#appendix" class="md-nav__link">
-    Appendix
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -890,242 +824,18 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-fun-way" class="md-nav__link">
-    The fun way
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-quick-way" class="md-nav__link">
-    The quick way
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#if-when-things-go-wrong" class="md-nav__link">
-    ~~If~~ When things go wrong
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#appendix" class="md-nav__link">
-    Appendix
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>How to install NVidia drivers on BunsenLabs/Debian 8 to setup dual screens</h1>
+  <h1>2021-modern Python development</h1>
   <p class="post-meta">
-    Published Mar 09, 2018
+    Published Mar 15, 2018
     by Timothée Mazzucotelli
   </p>
-  <p>Honestly, this post is mostly a personal memo. I will NOT go through this again!</p>
-<!--more-->
-
-<ul>
-<li><a href="#the-fun-way">The fun way</a></li>
-<li><a href="#the-quick-way">The quick way</a></li>
-<li><a href="#if-when-things-go-wrong">~~If~~ When things go wrong</a>
-  (you should probably read this anyway)</li>
-<li><a href="#appendix">Appendix</a></li>
-</ul>
-<h2 id="the-fun-way">The fun way<a class="headerlink" href="#the-fun-way" title="Permanent link">¤</a></h2>
-<p>First, to save your time and mind, install the Linux headers!</p>
-<div class="highlight"><pre><span></span><code>sudo apt install linux-headers-<span class="k">$(</span>uname -r<span class="k">)</span>
-</code></pre></div>
-<p>I spent two painful hours this afternoon trying to figure out why it wouldn't
-work. It happens that I didn't install these headers!</p>
-<p>Also install these requirements:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install xserver-xorg xserver-xorg-core xserver-xorg-dev
-</code></pre></div>
-<p>Now, install the Nvidia Detect program. It will tell you where to get the driver
-from:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install nvidia-detect
-</code></pre></div>
-<p>Run it:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$ </span>nvidia-detect
-<span class="go">Detected NVIDIA GPUs:</span>
-<span class="go">01:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:1402] (rev a1)</span>
-<span class="go">Your card is only supported by a newer driver that is available in jessie-backports.</span>
-<span class="go">See http://backports.debian.org for instructions how to use backports.</span>
-<span class="go">You may also find newer driver packages in experimental.</span>
-<span class="go">It is recommended to install the</span>
-<span class="go">    nvidia-driver/jessie-backports</span>
-<span class="go">package.</span>
-</code></pre></div>
-<p>So, in my case, I have to install the driver from Jessie backports.</p>
-<p><strong>Beware!!</strong> It might not be your case! Pay attention to what <code>nvidia-detect</code>
-says, and do what it says :D!</p>
-<p>So, for Jessie backports, you would install the driver like this:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install -t jessie-backports nvidia-driver
-</code></pre></div>
-<!--
-If somehow the `-t jessie-backports` is not working, you might need to add
-these lines to `/etc/apt/sources.list`:
-
-<div class="highlight"><pre><span></span><code>deb http://httpredir.debian.org/debian jessie main non-free contrib
-deb-src http://httpredir.debian.org/debian jessie main non-free contrib
-
-deb http://security.debian.org/ jessie/updates main contrib non-free
-deb-src http://security.debian.org/ jessie/updates main contrib non-free
-</code></pre></div>
--->
-
-<p>But the driver is not the only thing you need to install. I'm gonna install
-the rest from Jessie backports as well, <strong>adapt to your needs!</strong></p>
-<div class="highlight"><pre><span></span><code>sudo apt install -t jessie-backports nvidia-xconfig nvidia-settings xserver-xorg-video-nvidia
-</code></pre></div>
-<p>Reboot! At this point, it won't hurt your OS (it will actually help).</p>
-<p><img alt="reboot" src="/assets/reboot.png" /></p>
-<p><em>Rebooting...</em></p>
-<p>Alright, you should now be able to run <code>nvidia-xconfig</code> without trouble:</p>
-<div class="highlight"><pre><span></span><code>sudo nvidia-xconfig
-</code></pre></div>
-<p>This command will create or update the file <code>/etc/X11/xorg.conf</code>.</p>
-<p>You can now restart your X server and send me a not-positive comment below
-if nothing works and your system is broken.</p>
-<div class="highlight"><pre><span></span><code>sudo systemctl restart lightdm.service
-</code></pre></div>
-<p>Login, then finalize with:</p>
-<div class="highlight"><pre><span></span><code>sudo nvidia-settings
-</code></pre></div>
-<p><img alt="nvidia-settings" src="/assets/nvidia-settings.png" /></p>
-<p>Set your screen(s) resolutions and everything, save the configuration
-into <code>/etc/X11/xorg.conf</code>, maybe reboot one last time, and you should be
-good to go!</p>
-<h2 id="the-quick-way">The quick way<a class="headerlink" href="#the-quick-way" title="Permanent link">¤</a></h2>
-<p>It's just a summary of the previous commands. Don't actually copy-paste-run it:
-have a break at the lonely <code>nvidia-detect</code> line.</p>
-<div class="highlight"><pre><span></span><code>sudo apt install linux-headers-<span class="k">$(</span>uname -r<span class="k">)</span>
-sudo apt install xserver-xorg xserver-xorg-core xserver-xorg-dev
-sudo apt install nvidia-detect
-
-nvidia-detect  <span class="c1"># update the apt commands after this</span>
-
-sudo apt install -t jessie-backports nvidia-driver
-sudo apt install -t jessie-backports nvidia-xconfig nvidia-settings xserver-xorg-video-nvidia
-<span class="c1"># reboot</span>
-sudo nvidia-xconfig
-sudo systemctl restart lightdm.service
-sudo nvidia-settings  <span class="c1"># update your config and save it</span>
-<span class="c1"># reboot</span>
-</code></pre></div>
-<h2 id="if-when-things-go-wrong">~~If~~ When things go wrong<a class="headerlink" href="#if-when-things-go-wrong" title="Permanent link">¤</a></h2>
-<ul>
-<li>You should consider following another tutorial.</li>
-<li>If the X server does not start, hit <code>Ctrl-Alt-F1</code> to get a non-graphical
-  terminal. From there, simply delete the bad <code>/etc/X11/xorg.conf</code> and
-  run <code>systemctl restart lightdm.service</code> again to get back your beloved GUI.</li>
-<li>If you installed the wrong things: it's pretty safe to purge all <code>nvidia-*</code>
-  packages, but it is <strong>not safe to purge <code>xserver-xorg-*</code> ones</strong>.
-  Except the specific <code>xserver-xorg-video-nvidia</code>.
-  Or if you like the Linux (re)installation process.</li>
-<li><strong>After an update/upgrade</strong>: if you upgraded your system with
-  <code>apt update; apt upgrade</code> and your X server does not start anymore, it might
-  be because your Linux headers have not been updated. Remember to
-  always update your Linux headers after the kernel has been upgraded!
-  <code>sudo apt install linux-headers-$(uname -r)</code></li>
-</ul>
-<h2 id="appendix">Appendix<a class="headerlink" href="#appendix" title="Permanent link">¤</a></h2>
-<p>Example of <code>/etc/X11/xorg.conf</code> for dual screen setup:
-<div class="highlight"><pre><span></span><code># nvidia-settings: X configuration file generated by nvidia-settings
-# nvidia-settings:  version 375.26  (buildd@debian)  Wed Jan 18 14:43:15 UTC 2017
-
-# nvidia-xconfig: X configuration file generated by nvidia-xconfig
-# nvidia-xconfig:  version 340.46  (buildd@brahms)  Tue Oct  7 08:00:32 UTC 2014
-
-Section &quot;ServerLayout&quot;
-    Identifier     &quot;Layout0&quot;
-    Screen      0  &quot;Screen0&quot; 0 0
-    InputDevice    &quot;Keyboard0&quot; &quot;CoreKeyboard&quot;
-    InputDevice    &quot;Mouse0&quot; &quot;CorePointer&quot;
-    Option         &quot;Xinerama&quot; &quot;0&quot;
-EndSection
-
-Section &quot;Files&quot;
-EndSection
-
-Section &quot;InputDevice&quot;
-
-    # generated from default
-    Identifier     &quot;Mouse0&quot;
-    Driver         &quot;mouse&quot;
-    Option         &quot;Protocol&quot; &quot;auto&quot;
-    Option         &quot;Device&quot; &quot;/dev/psaux&quot;
-    Option         &quot;Emulate3Buttons&quot; &quot;no&quot;
-    Option         &quot;ZAxisMapping&quot; &quot;4 5&quot;
-EndSection
-
-Section &quot;InputDevice&quot;
-
-    # generated from default
-    Identifier     &quot;Keyboard0&quot;
-    Driver         &quot;kbd&quot;
-EndSection
-
-Section &quot;Monitor&quot;
-    Identifier     &quot;Monitor0&quot;
-    VendorName     &quot;Unknown&quot;
-    ModelName      &quot;HP LE2202x&quot;
-    HorizSync       24.0 - 94.0
-    VertRefresh     50.0 - 76.0
-    Option         &quot;DPMS&quot;
-EndSection
-
-Section &quot;Device&quot;
-    Identifier     &quot;Device0&quot;
-    Driver         &quot;nvidia&quot;
-    VendorName     &quot;NVIDIA Corporation&quot;
-    BoardName      &quot;GeForce GTX 950&quot;
-EndSection
-
-Section &quot;Screen&quot;
-
-# Removed Option &quot;metamodes&quot; &quot;DVI-I-1: nvidia-auto-select +0+0, DVI-D-0: 640x480 +1920+0&quot;
-# Removed Option &quot;metamodes&quot; &quot;DVI-I-1: nvidia-auto-select +0+0, DVI-D-0: 1440x900 +1920+128&quot;
-    Identifier     &quot;Screen0&quot;
-    Device         &quot;Device0&quot;
-    Monitor        &quot;Monitor0&quot;
-    DefaultDepth    24
-    Option         &quot;Stereo&quot; &quot;0&quot;
-    Option         &quot;metamodes&quot; &quot;DVI-I-1: nvidia-auto-select +0+0, DVI-D-0: 1440x900 +1920+90&quot;
-    Option         &quot;SLI&quot; &quot;Off&quot;
-    Option         &quot;MultiGPU&quot; &quot;Off&quot;
-    Option         &quot;BaseMosaic&quot; &quot;off&quot;
-    SubSection     &quot;Display&quot;
-        Depth       24
-    EndSubSection
-EndSection
-</code></pre></div></p>
+  <p>In this post I present my latest project template for Python projects,
+<a href="https://github.com/pawamoy/copier-poetry">copier-poetry</a>,
+based on the great <a href="https://github.com/copier-org/copier">Copier</a> tool.</p>
 
               
   <hr>
@@ -1144,41 +854,6 @@ EndSection
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-          <a href="../django-auth-server-for-shiny/" title="Django application as an authentication / authorization server for Shiny" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-            </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Django application as an authentication / authorization server for Shiny
-              </div>
-            </div>
-          </a>
-        
-        
-          <a href="../docker-compose-django-postgres-nginx/" title="Docker Compose with NginX, Django, Gunicorn and multiple Postgres databases" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Docker Compose with NginX, Django, Gunicorn and multiple Postgres databases
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
